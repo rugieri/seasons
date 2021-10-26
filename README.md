@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# Seasons
+A simple App from: Modern React with Redux by Stephen Grider that uses class-based, states and lifecycles components 
+who detect what season is based on location of user(northern hemisphere/ southern hemisphere).
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
