@@ -11,20 +11,29 @@ class App extends React.Component {
         this.setState({
           lat: position.coords.latitude,
           lon: position.coords.longitude,
+          errorMessage: '',
         });
       },
-      (err) => console.log(err)
+      (err) => {
+        this.setState({ errorMessage: err.message });
+      }
     );
   }
 
   render() {
-    return (
-      <div>
-        Latitude: {this.state.lat}
-        <br />
-        Longitude: {this.state.lon}
-      </div>
-    );
+    if (this.state.errorMessage && !this.state.lat && !this.state.lon) {
+      return <div>Error: {this.state.errorMessage}</div>;
+    }
+    if (!this.state.errorMessage && this.state.lat && this.state.lon) {
+      return (
+        <div>
+          Latitude: {this.state.lat}
+          <br />
+          Longitude: {this.state.lon}
+        </div>
+      );
+    }
+    return <div>Loading...</div>;
   }
 }
 ReactDOM.render(<App />, document.querySelector('#root'));
